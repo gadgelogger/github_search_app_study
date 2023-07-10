@@ -44,14 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
 
-        title: Text('github'),
+        title: const Text('github'),
       ),
-      body: Center(
+      body: const Center(
 
-        child: Column(
+        child: const Column(
 
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: const <Widget>[
             const Text(
               'test',
             ),
