@@ -37,10 +37,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('github'),
       ),
       body: const Center(
-        child: const Column(
+        child:  Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            const Text(
+          children:  <Widget>[
+             Text(
               'test',
             ),
           ],
