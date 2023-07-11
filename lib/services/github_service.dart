@@ -21,7 +21,6 @@ class GithubService {
 }
 
 class SearchProvider extends ChangeNotifier {
-  final GithubService _githubService = GithubService();
   List<Repository> _repositories = [];
   bool _isLoading = false;
   bool _isLoadingMore = false; // <- added this line
