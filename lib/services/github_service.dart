@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/foundation.dart';
 import 'package:github_search_app_study/models/repository.dart';
+import 'package:flutter/foundation.dart';
 class GithubService {
   Future<SearchResult> searchRepositories(String keyword, {int page = 1}) async {
     final response = await http.get(
@@ -21,6 +21,7 @@ class GithubService {
 }
 
 class SearchProvider extends ChangeNotifier {
+  final GithubService _githubService = GithubService();
   List<Repository> _repositories = [];
   bool _isLoading = false;
   bool _isLoadingMore = false; // <- added this line
@@ -47,9 +48,44 @@ class SearchProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> search(String keyword) async {
+    _isLoading = true;
+    _hasSearched = true;
+    _errorMessage = '';
+    notifyListeners();
+    try {
+      var result = await _githubService.searchRepositories(keyword);
+      _repositories = result.items;
+      _totalCount = result.totalCount;
+      if (_repositories.isEmpty) {
+        _errorMessage = 'none';
+      }
+    } catch (e) {
+      _errorMessage = 'error';
+    }
+    _isLoading = false;
+    notifyListeners();
+  }
 
-
-
+  // fetchMore method
+  Future<void> fetchMore(String keyword) async {
+    _isLoadingMore = true; // Set loading more to true
+    notifyListeners();
+    try {
+      // Fetch next page of results based on the current list length
+      final result = await _githubService.searchRepositories(keyword, page: _repositories.length ~/ 10 + 1);
+      // Add new items to our list
+      _repositories.addAll(result.items);
+      _totalCount = result.totalCount;
+      if (_repositories.isEmpty) {
+        _errorMessage = 'none';
+      }
+    } catch (e) {
+      _errorMessage = 'error';
+    }
+    _isLoadingMore = false; // Set loading more to false
+    notifyListeners();
+  }
 }
 
 
