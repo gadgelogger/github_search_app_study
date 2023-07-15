@@ -194,23 +194,23 @@ class SearchScreen extends StatelessWidget {
                     ));
                   } else if (provider.repositories.isEmpty) {
                     return const Center(
-                      child: const SingleChildScrollView(
-                        child: const Column(
+                      child: SingleChildScrollView(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            const SizedBox(
+                          children: [
+                            SizedBox(
                                 width: 200,
                                 height: 200,
                                 child: Image(
                                   image: AssetImage('assets/search.gif'),
                                   fit: BoxFit.cover,
                                 )),
-                            const SizedBox(
+                            SizedBox(
                               height: 50,
                             ),
-                            const Text(
+                            Text(
                               'hello',
-                              style: const TextStyle(fontSize: 18),
+                              style: TextStyle(fontSize: 18),
                               textAlign: TextAlign.center,
                             ),
                           ],
