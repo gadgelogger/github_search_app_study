@@ -42,6 +42,7 @@ dependencies:
   expansion_tile_card: ^3.0.0
   url_launcher: ^6.1.12
   flutter_native_splash: ^2.3.1
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+#アプリのアイコン関連
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon2.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
 
  #スプラッシュスクリーン
 flutter_native_splash:
