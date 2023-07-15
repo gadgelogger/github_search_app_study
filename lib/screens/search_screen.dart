@@ -8,7 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SearchScreen extends StatelessWidget {
   final TextEditingController _controller =
-  TextEditingController(); //検索フィールドのコントロール用
+      TextEditingController(); //検索フィールドのコントロール用
   final outputFormat = DateFormat('yyyy/MM/dd/ HH:mm'); //日付のフォーマット用
 
   SearchScreen({Key? key}) : super(key: key);
@@ -92,7 +92,6 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus(); //キーボードのフォーカス関連
@@ -125,15 +124,15 @@ class SearchScreen extends StatelessWidget {
                         ),
                         filled: true,
                         fillColor:
-                        Theme.of(context).brightness == Brightness.light
-                            ? Colors.grey[300]
-                            : Colors.grey[800],
+                            Theme.of(context).brightness == Brightness.light
+                                ? Colors.grey[300]
+                                : Colors.grey[800],
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                           borderSide: BorderSide.none,
                         ),
                         contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 20.0),
+                            const EdgeInsets.symmetric(horizontal: 20.0),
                       ),
                     ), //検索フォールド（ここまで）
                   ),
@@ -174,31 +173,31 @@ class SearchScreen extends StatelessWidget {
                   } else if (provider.errorMessage.isNotEmpty) {
                     return Center(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const SizedBox(
-                                width: 200,
-                                height: 200,
-                                child: Image(
-                                  image: AssetImage('assets/error.gif'),
-                                  fit: BoxFit.cover,
-                                )),
-                            const SizedBox(
-                              height: 50,
-                            ),
-                            Text(
-                              provider.errorMessage,
-                              style: const TextStyle(fontSize: 18),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ));
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                            width: 200,
+                            height: 200,
+                            child: Image(
+                              image: AssetImage('assets/error.gif'),
+                              fit: BoxFit.cover,
+                            )),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Text(
+                          provider.errorMessage,
+                          style: const TextStyle(fontSize: 18),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ));
                   } else if (provider.repositories.isEmpty) {
-                    return Center(
-                      child: SingleChildScrollView(
-                        child: Column(
+                    return const Center(
+                      child: const SingleChildScrollView(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             const SizedBox(
                                 width: 200,
                                 height: 200,
@@ -209,7 +208,7 @@ class SearchScreen extends StatelessWidget {
                             const SizedBox(
                               height: 50,
                             ),
-                            Text(
+                            const Text(
                               'hello',
                               style: const TextStyle(fontSize: 18),
                               textAlign: TextAlign.center,
@@ -253,28 +252,28 @@ class SearchScreen extends StatelessWidget {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Theme.of(context).brightness ==
-                                              Brightness.light
+                                                  Brightness.light
                                               ? Colors.black
                                               : Colors.white),
                                     ),
                                     subtitle: Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           children: [
                                             Icon(Icons.star_border,
                                                 color: Theme.of(context)
-                                                    .brightness ==
-                                                    Brightness.light
+                                                            .brightness ==
+                                                        Brightness.light
                                                     ? Colors.black
                                                     : Colors.white),
                                             Text(
                                               '${repository.stars}',
                                               style: TextStyle(
                                                   color: Theme.of(context)
-                                                      .brightness ==
-                                                      Brightness.light
+                                                              .brightness ==
+                                                          Brightness.light
                                                       ? Colors.black
                                                       : Colors.white),
                                             ),
@@ -294,8 +293,8 @@ class SearchScreen extends StatelessWidget {
                                               repository.language,
                                               style: TextStyle(
                                                 color: Theme.of(context)
-                                                    .brightness ==
-                                                    Brightness.light
+                                                            .brightness ==
+                                                        Brightness.light
                                                     ? Colors.black
                                                     : Colors.white,
                                               ),
@@ -308,7 +307,7 @@ class SearchScreen extends StatelessWidget {
                                       Divider(
                                         height: 1.0,
                                         color: Theme.of(context).brightness ==
-                                            Brightness.light
+                                                Brightness.light
                                             ? Colors.grey[300]
                                             : Colors.grey[800],
                                       ),
@@ -316,7 +315,7 @@ class SearchScreen extends StatelessWidget {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Column(
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start, // 追加
+                                              CrossAxisAlignment.start, // 追加
                                           children: <Widget>[
                                             Row(
                                               children: [
@@ -326,7 +325,7 @@ class SearchScreen extends StatelessWidget {
                                                     repository.description,
                                                     maxLines: 2,
                                                     overflow:
-                                                    TextOverflow.ellipsis,
+                                                        TextOverflow.ellipsis,
                                                   ),
                                                 ),
                                               ],
@@ -340,7 +339,7 @@ class SearchScreen extends StatelessWidget {
                                                 const Text('Watchers',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.w200))
+                                                            FontWeight.w200))
                                               ],
                                             ),
                                             Row(
@@ -351,7 +350,7 @@ class SearchScreen extends StatelessWidget {
                                                 const Text('Forks',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.w200))
+                                                            FontWeight.w200))
                                               ],
                                             ),
                                             Row(
@@ -363,7 +362,7 @@ class SearchScreen extends StatelessWidget {
                                                 const Text('Issues',
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.w200))
+                                                            FontWeight.w200))
                                               ],
                                             ),
                                             Row(
@@ -374,7 +373,7 @@ class SearchScreen extends StatelessWidget {
                                                   repository.license,
                                                   maxLines: 2,
                                                   overflow:
-                                                  TextOverflow.ellipsis,
+                                                      TextOverflow.ellipsis,
                                                 ),
                                               ],
                                             ),
@@ -383,8 +382,9 @@ class SearchScreen extends StatelessWidget {
                                                 const Icon(Icons.access_time),
                                                 const SizedBox(width: 8.0),
                                                 Text(
-                                                  '${outputFormat.format(repository.createdAt)}',
-                                                ),
+                                                  outputFormat.format(
+                                                      repository.createdAt),
+                                                )
                                               ],
                                             ),
                                             Row(
@@ -392,7 +392,8 @@ class SearchScreen extends StatelessWidget {
                                                 const Icon(Icons.access_time),
                                                 const SizedBox(width: 8.0),
                                                 Text(
-                                                  '${outputFormat.format(repository.updatedAt)}',
+                                                  outputFormat.format(
+                                                      repository.updatedAt),
                                                 ),
                                               ],
                                             ),
@@ -405,7 +406,7 @@ class SearchScreen extends StatelessWidget {
                                             ),
                                             Row(
                                               mainAxisAlignment:
-                                              MainAxisAlignment.end,
+                                                  MainAxisAlignment.end,
                                               children: [
                                                 FloatingActionButton.extended(
                                                   onPressed: () async {
@@ -424,8 +425,8 @@ class SearchScreen extends StatelessWidget {
                                                     'open',
                                                     style: TextStyle(
                                                       color: Theme.of(context)
-                                                          .brightness ==
-                                                          Brightness.light
+                                                                  .brightness ==
+                                                              Brightness.light
                                                           ? Colors.white
                                                           : Colors.white,
                                                     ),
@@ -434,18 +435,18 @@ class SearchScreen extends StatelessWidget {
                                                   icon: Icon(
                                                     Icons.open_in_new_outlined,
                                                     color: Theme.of(context)
-                                                        .brightness ==
-                                                        Brightness.light
+                                                                .brightness ==
+                                                            Brightness.light
                                                         ? Colors.white
                                                         : Colors.white,
                                                   ),
                                                   //アイコン
                                                   backgroundColor:
-                                                  Theme.of(context)
-                                                      .brightness ==
-                                                      Brightness.light
-                                                      ? Colors.black
-                                                      : Colors.grey[700],
+                                                      Theme.of(context)
+                                                                  .brightness ==
+                                                              Brightness.light
+                                                          ? Colors.black
+                                                          : Colors.grey[700],
                                                 ),
                                               ],
                                             ),

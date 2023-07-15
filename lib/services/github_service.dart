@@ -20,6 +20,9 @@ class GithubService {
   }
 }
 
+
+
+
 class SearchProvider extends ChangeNotifier {
   final GithubService _githubService = GithubService();
   List<Repository> _repositories = [];

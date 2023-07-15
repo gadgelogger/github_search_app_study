@@ -17,14 +17,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
         create: (_) => SearchProvider(),
-    child: MaterialApp(
-      title: 'github_search_app_study',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home:  SearchScreen(),
-    ));
+        child: MaterialApp(
+          title: 'github_search_app_study',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: SearchScreen(),
+        ));
   }
 }
-
