@@ -1,0 +1,10 @@
+{
+  "hello": "You can search repositories",
+  "search": "Search",
+  "error": "An invalid request has been sent.",
+  "none": "No repositories were found",
+  "result": "repositories found",
+  "open": "Open the repository",
+  "make": "-Create to",
+  "update": "-Last updated on"
+}

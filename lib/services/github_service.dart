@@ -2,26 +2,28 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:github_search_app_study/models/repository.dart';
 import 'package:flutter/foundation.dart';
+import 'package:github_search_app_study/i18n/translations.g.dart';
+
 class GithubService {
-  Future<SearchResult> searchRepositories(String keyword, {int page = 1}) async {
+  Future<SearchResult> searchRepositories(String keyword,
+      {int page = 1}) async {
     final response = await http.get(
-      Uri.parse('https://api.github.com/search/repositories?q=$keyword&page=$page'),
+      Uri.parse(
+          'https://api.github.com/search/repositories?q=$keyword&page=$page'),
     );
 
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body);
       int totalCount = json['total_count'];
       List<dynamic> items = json['items'];
-      List<Repository> repositories = items.map((item) => Repository.fromJson(item)).toList();
+      List<Repository> repositories =
+          items.map((item) => Repository.fromJson(item)).toList();
       return SearchResult(totalCount: totalCount, items: repositories);
     } else {
       throw Exception('Failed to load repositories');
     }
   }
 }
-
-
-
 
 class SearchProvider extends ChangeNotifier {
   final GithubService _githubService = GithubService();
@@ -39,7 +41,9 @@ class SearchProvider extends ChangeNotifier {
   String get errorMessage => _errorMessage;
   int get totalCount => _totalCount;
 
-
+  //多言語化用
+  String error = t.error;
+  String none = t.none;
 
   void clear() {
     _repositories = [];
@@ -61,10 +65,10 @@ class SearchProvider extends ChangeNotifier {
       _repositories = result.items;
       _totalCount = result.totalCount;
       if (_repositories.isEmpty) {
-        _errorMessage = 'none';
+        _errorMessage = none;
       }
     } catch (e) {
-      _errorMessage = 'error';
+      _errorMessage = error;
     }
     _isLoading = false;
     notifyListeners();
@@ -76,21 +80,21 @@ class SearchProvider extends ChangeNotifier {
     notifyListeners();
     try {
       // Fetch next page of results based on the current list length
-      final result = await _githubService.searchRepositories(keyword, page: _repositories.length ~/ 10 + 1);
+      final result = await _githubService.searchRepositories(keyword,
+          page: _repositories.length ~/ 10 + 1);
       // Add new items to our list
       _repositories.addAll(result.items);
       _totalCount = result.totalCount;
       if (_repositories.isEmpty) {
-        _errorMessage = 'none';
+        _errorMessage = none;
       }
     } catch (e) {
-      _errorMessage = 'error';
+      _errorMessage = error;
     }
     _isLoadingMore = false; // Set loading more to false
     notifyListeners();
   }
 }
-
 
 class SearchResult {
   final int totalCount;

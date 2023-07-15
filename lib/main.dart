@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:github_search_app_study/screens/search_screen.dart';
 import 'package:github_search_app_study/services/github_service.dart';
 import 'package:provider/provider.dart';
+import 'i18n/translations.g.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); // 追加
+  WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
 
   runApp(const MyApp());
 }
