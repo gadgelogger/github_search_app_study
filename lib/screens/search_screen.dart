@@ -7,6 +7,16 @@ import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:github_search_app_study/i18n/translations.g.dart';
 
+//例外クラスを作成
+class Webview implements Exception {
+  final String url;
+
+  Webview(this.url);
+
+  @override
+  String toString() => 'Could not launch $url';
+}
+
 class SearchScreen extends StatelessWidget {
   final TextEditingController _controller =
       TextEditingController(); //検索フィールドのコントロール用
@@ -421,9 +431,11 @@ class SearchScreen extends StatelessWidget {
                                                     if (await canLaunchUrl(
                                                         Uri.parse(url))) {
                                                       await launchUrl(
-                                                          Uri.parse(url));
+                                                          Uri.parse(url),
+                                                          mode: LaunchMode.externalApplication,
+                                                          );
                                                     } else {
-                                                      throw 'Could not launch $url';
+                                                      throw Webview(url);
                                                     }
                                                   },
 
