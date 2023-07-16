@@ -22,7 +22,15 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'github_search_app_study',
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            colorScheme: const ColorScheme.light().copyWith(
+              primary: Colors.black,
+            ),
+            useMaterial3: true,
+          ),
+          darkTheme: ThemeData(
+            colorScheme: const ColorScheme.dark().copyWith(
+              primary: Colors.grey[400],
+            ),
             useMaterial3: true,
           ),
           home: SearchScreen(),
