@@ -27,7 +27,7 @@ GithubAPIを利用してGithubのリポジトリを検索する超シンプル�
 ・クローン
 
 ```
-git clone https://github.com/mqkotoo/github_search_study.git
+git clone https://github.com/gadgelogger/github_search_study.git
 ```
 
  ・fvm読み込み
