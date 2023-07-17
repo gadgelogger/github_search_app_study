@@ -6,7 +6,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TextEditingController controller;
   final String search;
 
-  CustomAppBar({Key? key, required this.controller, required this.search})
+  const CustomAppBar({Key? key, required this.controller, required this.search})
       : super(key: key);
 
   @override
