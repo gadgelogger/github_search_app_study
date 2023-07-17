@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:github_search_app_study/screens/DetailRow.dart';
+import 'package:github_search_app_study/components/detail_row.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:github_search_app_study/services/github_service.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:github_search_app_study/i18n/translations.g.dart';
+
+import '../components/loading_shimmer.dart';
 
 //例外クラスを作成
 class Webview implements Exception {
@@ -24,83 +25,6 @@ class SearchScreen extends StatelessWidget {
   final outputFormat = DateFormat('yyyy/MM/dd/ HH:mm'); //日付のフォーマット用
 
   SearchScreen({Key? key}) : super(key: key);
-
-  //読み込み時に表示するWidget
-  Widget _buildShimmer(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (_, __) => Shimmer.fromColors(
-        baseColor: isDarkMode ? Colors.grey[700]! : Colors.grey[300]!,
-        highlightColor: isDarkMode ? Colors.grey[600]! : Colors.grey[200]!,
-        child: ListTile(
-          leading: ClipOval(
-            child: Container(
-              width: 50,
-              height: 50,
-              color: Colors.white,
-            ),
-          ),
-          title: const SizedBox(
-            height: 20,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
-            ),
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 10.0,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 5.0,
-              ),
-              Row(
-                children: [
-                  const Icon(Icons.star_border, color: Colors.white),
-                  const SizedBox(
-                    width: 50.0,
-                    height: 10.0,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    width: 10.0,
-                    height: 10.0,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(width: 5.0),
-                  const SizedBox(
-                    width: 100.0,
-                    height: 10.0,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -188,7 +112,7 @@ class SearchScreen extends StatelessWidget {
               child: Consumer<SearchProvider>(
                 builder: (_, provider, __) {
                   if (provider.isLoading) {
-                    return _buildShimmer(context);
+                    return LoadingShimmer();
                   } else if (provider.errorMessage.isNotEmpty) {
                     return Center(
                         child: Column(
@@ -352,8 +276,7 @@ class SearchScreen extends StatelessWidget {
                                             ),
                                             DetailRow(
                                               iconData: Icons.book_rounded,
-                                              text: repository.license ??
-                                                  'No License',
+                                              text: repository.license,
                                             ),
                                             DetailRow(
                                               iconData: Icons.access_time,
