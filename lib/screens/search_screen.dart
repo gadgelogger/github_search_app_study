@@ -7,6 +7,7 @@ import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:github_search_app_study/i18n/translations.g.dart';
 
+import '../components/appbar.dart';
 import '../components/loading_shimmer.dart';
 
 //例外クラスを作成
@@ -40,49 +41,9 @@ class SearchScreen extends StatelessWidget {
         FocusScope.of(context).unfocus(); //キーボードのフォーカス関連
       },
       child: Scaffold(
-        appBar: AppBar(
-          scrolledUnderElevation: 0,
-          title: PreferredSize(
-            preferredSize: const Size.fromHeight(60.0),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      //検索フィールド
-                      controller: _controller,
-                      onSubmitted: (value) {
-                        context.read<SearchProvider>().search(value);
-                      },
-                      decoration: InputDecoration(
-                        hintText: search,
-                        prefixIcon: const Icon(Icons.search),
-                        suffixIcon: IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: () {
-                            _controller.clear();
-                            context.read<SearchProvider>().clear();
-                          },
-                        ),
-                        filled: true,
-                        fillColor:
-                            Theme.of(context).brightness == Brightness.light
-                                ? Colors.grey[300]
-                                : Colors.grey[800],
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 20.0),
-                      ),
-                    ), //検索フォールド（ここまで）
-                  ),
-                ],
-              ),
-            ),
-          ),
+        appBar: CustomAppBar(
+          controller: _controller,
+          search: search,
         ),
         body: Column(
           children: [
