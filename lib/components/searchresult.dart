@@ -6,7 +6,7 @@ import '../services/github_service.dart';
 class ResultCount extends StatelessWidget {
   final String result;
 
-  ResultCount({Key? key, required this.result}) : super(key: key);
+  const ResultCount({Key? key, required this.result}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

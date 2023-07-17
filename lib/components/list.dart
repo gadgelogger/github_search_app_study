@@ -14,7 +14,7 @@ class RepositoryList extends StatelessWidget {
   final String make;
   final String update;
 
-  RepositoryList({
+  const RepositoryList({
     Key? key,
     required this.open,
     required this.outputFormat,
