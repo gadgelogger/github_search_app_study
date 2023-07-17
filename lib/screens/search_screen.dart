@@ -9,6 +9,7 @@ import 'package:github_search_app_study/i18n/translations.g.dart';
 
 import '../components/appbar.dart';
 import '../components/loading_shimmer.dart';
+import '../components/searchresult.dart';
 
 //例外クラスを作成
 class Webview implements Exception {
@@ -47,28 +48,7 @@ class SearchScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Consumer<SearchProvider>(
-              builder: (_, provider, __) {
-                if (provider.hasSearched &&
-                    !provider.isLoading &&
-                    provider.errorMessage.isEmpty) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          '${provider.totalCount}$result',
-                          textAlign: TextAlign.start,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  );
-                }
-                return Container();
-              },
-            ),
+            ResultCount(result: result),
             Expanded(
               child: Consumer<SearchProvider>(
                 builder: (_, provider, __) {
