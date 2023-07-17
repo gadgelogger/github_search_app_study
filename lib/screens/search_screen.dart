@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:github_search_app_study/screens/DetailRow.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:github_search_app_study/services/github_service.dart';
@@ -333,92 +334,40 @@ class SearchScreen extends StatelessWidget {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start, // 追加
+                                              CrossAxisAlignment.start,
                                           children: <Widget>[
-                                            Row(
-                                              children: [
-                                                const SizedBox(width: 8.0),
-                                                Expanded(
-                                                  child: Text(
-                                                    repository.description,
-                                                    maxLines: 2,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                ),
-                                              ],
+                                            DetailRow(
+                                              iconData: Icons.remove_red_eye,
+                                              text:
+                                                  '${repository.watchers} watchers',
                                             ),
-                                            Row(
-                                              children: [
-                                                const Icon(
-                                                    Icons.remove_red_eye),
-                                                const SizedBox(width: 8.0),
-                                                Text('${repository.watchers}'),
-                                                const Text('Watchers',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w200))
-                                              ],
+                                            DetailRow(
+                                              iconData: Icons.call_split,
+                                              text: '${repository.forks} forks',
                                             ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.call_split),
-                                                const SizedBox(width: 8.0),
-                                                Text('${repository.forks}'),
-                                                const Text('Forks',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w200))
-                                              ],
+                                            DetailRow(
+                                              iconData: Icons.report_problem,
+                                              text:
+                                                  '${repository.issues} issues',
                                             ),
-                                            Row(
-                                              children: [
-                                                const Icon(
-                                                    Icons.report_problem),
-                                                const SizedBox(width: 8.0),
-                                                Text('${repository.issues}'),
-                                                const Text('Issues',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w200))
-                                              ],
+                                            DetailRow(
+                                              iconData: Icons.book_rounded,
+                                              text: repository.license ??
+                                                  'No License',
                                             ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.book_rounded),
-                                                const SizedBox(width: 8.0),
-                                                Text(
-                                                  repository.license,
-                                                  maxLines: 2,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.access_time),
-                                                const SizedBox(width: 8.0),
-                                                Text(
+                                            DetailRow(
+                                              iconData: Icons.access_time,
+                                              text:
                                                   '${outputFormat.format(repository.createdAt)}$make',
-                                                ),
-                                              ],
                                             ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.access_time),
-                                                const SizedBox(width: 8.0),
-                                                Text(
+                                            DetailRow(
+                                              iconData: Icons.access_time,
+                                              text:
                                                   '${outputFormat.format(repository.updatedAt)}$update',
-                                                ),
-                                              ],
                                             ),
-                                            Row(
-                                              children: [
-                                                const Icon(Icons.person),
-                                                const SizedBox(width: 8.0),
-                                                Text(repository.ownerName),
-                                              ],
+                                            DetailRow(
+                                              iconData: Icons.person,
+                                              text: repository.ownerName,
                                             ),
                                             Row(
                                               mainAxisAlignment:
@@ -431,14 +380,14 @@ class SearchScreen extends StatelessWidget {
                                                     if (await canLaunchUrl(
                                                         Uri.parse(url))) {
                                                       await launchUrl(
-                                                          Uri.parse(url),
-                                                          mode: LaunchMode.externalApplication,
-                                                          );
+                                                        Uri.parse(url),
+                                                        mode: LaunchMode
+                                                            .externalApplication,
+                                                      );
                                                     } else {
                                                       throw Webview(url);
                                                     }
                                                   },
-
                                                   label: Text(
                                                     open,
                                                     style: TextStyle(
@@ -449,7 +398,6 @@ class SearchScreen extends StatelessWidget {
                                                           : Colors.white,
                                                     ),
                                                   ),
-                                                  //テキスト
                                                   icon: Icon(
                                                     Icons.open_in_new_outlined,
                                                     color: Theme.of(context)
@@ -458,7 +406,6 @@ class SearchScreen extends StatelessWidget {
                                                         ? Colors.white
                                                         : Colors.white,
                                                   ),
-                                                  //アイコン
                                                   backgroundColor:
                                                       Theme.of(context)
                                                                   .brightness ==
