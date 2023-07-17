@@ -112,7 +112,7 @@ class SearchScreen extends StatelessWidget {
               child: Consumer<SearchProvider>(
                 builder: (_, provider, __) {
                   if (provider.isLoading) {
-                    return LoadingShimmer();
+                    return const LoadingShimmer();
                   } else if (provider.errorMessage.isNotEmpty) {
                     return Center(
                         child: Column(
