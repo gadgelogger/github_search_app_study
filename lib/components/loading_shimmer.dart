@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:github_search_app_study/constants/color_constants.dart';
 
 class LoadingShimmer extends StatelessWidget {
   const LoadingShimmer({Key? key}) : super(key: key);
@@ -10,32 +11,34 @@ class LoadingShimmer extends StatelessWidget {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (_, __) => Shimmer.fromColors(
-        baseColor: isDarkMode ? Colors.grey[700]! : Colors.grey[300]!,
-        highlightColor: isDarkMode ? Colors.grey[600]! : Colors.grey[200]!,
+        baseColor: isDarkMode
+            ? ColorConstants.shimmer_baseColor_dark
+            : ColorConstants.shimmer_baseColor_light,
+        highlightColor: isDarkMode
+            ? ColorConstants.shimmer_highlightColor_dark
+            : ColorConstants.shimmer_highlightColor_light,
         child: ListTile(
           leading: ClipOval(
             child: Container(
-              width: 50,
-              height: 50,
-              color: Colors.white,
-            ),
+                width: 50,
+                height: 50,
+                color: ColorConstants.shimmer_Container_color),
           ),
-          title: const SizedBox(
+          title: SizedBox(
             height: 20,
             child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
+              decoration:
+                  BoxDecoration(color: ColorConstants.shimmer_ClipOval_color),
             ),
           ),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 10.0,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: ColorConstants.shimmer_sizebox_color,
                   ),
                 ),
               ),
@@ -44,13 +47,14 @@ class LoadingShimmer extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const Icon(Icons.star_border, color: Colors.white),
-                  const SizedBox(
+                  Icon(Icons.star_border,
+                      color: ColorConstants.shimmer_icon_color),
+                  SizedBox(
                     width: 50.0,
                     height: 10.0,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: ColorConstants.shimmer_sizebox_color,
                       ),
                     ),
                   ),
@@ -58,17 +62,16 @@ class LoadingShimmer extends StatelessWidget {
                     width: 20,
                   ),
                   Container(
-                    width: 10.0,
-                    height: 10.0,
-                    color: Colors.white,
-                  ),
+                      width: 10.0,
+                      height: 10.0,
+                      color: ColorConstants.shimmer_Container_color),
                   const SizedBox(width: 5.0),
-                  const SizedBox(
+                  SizedBox(
                     width: 100.0,
                     height: 10.0,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: ColorConstants.shimmer_sizebox_color,
                       ),
                     ),
                   ),

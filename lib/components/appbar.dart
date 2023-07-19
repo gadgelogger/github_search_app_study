@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/github_service.dart';
+import 'package:github_search_app_study/constants/color_constants.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TextEditingController controller;
@@ -40,8 +41,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                     filled: true,
                     fillColor: Theme.of(context).brightness == Brightness.light
-                        ? Colors.grey[300]
-                        : Colors.grey[800],
+                        ? ColorConstants.appBarColor_light
+                        : ColorConstants.appBarColor_dark,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.0),
                       borderSide: BorderSide.none,
