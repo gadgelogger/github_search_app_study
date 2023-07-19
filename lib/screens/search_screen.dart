@@ -27,6 +27,7 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //多言語化用
     String hello = t.hello;
     String search = t.search;
     String result = t.result;

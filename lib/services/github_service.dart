@@ -29,14 +29,14 @@ class SearchProvider extends ChangeNotifier {
   final GithubService _githubService = GithubService();
   List<Repository> _repositories = [];
   bool _isLoading = false;
-  bool _isLoadingMore = false; // <- added this line
+  bool _isLoadingMore = false;
   bool _hasSearched = false;
   String _errorMessage = '';
   int _totalCount = 0;
 
   List<Repository> get repositories => _repositories;
   bool get isLoading => _isLoading;
-  bool get isLoadingMore => _isLoadingMore; // <- added this line
+  bool get isLoadingMore => _isLoadingMore;
   bool get hasSearched => _hasSearched;
   String get errorMessage => _errorMessage;
   int get totalCount => _totalCount;
@@ -48,7 +48,7 @@ class SearchProvider extends ChangeNotifier {
   void clear() {
     _repositories = [];
     _isLoading = false;
-    _isLoadingMore = false; // <- added this line
+    _isLoadingMore = false;
     _hasSearched = false;
     _errorMessage = '';
     _totalCount = 0;
@@ -74,15 +74,12 @@ class SearchProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // fetchMore method
   Future<void> fetchMore(String keyword) async {
-    _isLoadingMore = true; // Set loading more to true
+    _isLoadingMore = true;
     notifyListeners();
     try {
-      // Fetch next page of results based on the current list length
       final result = await _githubService.searchRepositories(keyword,
           page: _repositories.length ~/ 10 + 1);
-      // Add new items to our list
       _repositories.addAll(result.items);
       _totalCount = result.totalCount;
       if (_repositories.isEmpty) {
@@ -91,7 +88,7 @@ class SearchProvider extends ChangeNotifier {
     } catch (e) {
       _errorMessage = error;
     }
-    _isLoadingMore = false; // Set loading more to false
+    _isLoadingMore = false;
     notifyListeners();
   }
 }
