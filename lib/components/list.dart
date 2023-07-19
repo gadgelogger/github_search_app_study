@@ -112,35 +112,56 @@ class RepositoryList extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              DetailRow(
-                                iconData: Icons.remove_red_eye,
-                                text: '${repository.watchers} watchers',
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: DetailRow(
+                                  iconData: Icons.remove_red_eye,
+                                  text: '${repository.watchers} watchers',
+                                ),
                               ),
-                              DetailRow(
-                                iconData: Icons.call_split,
-                                text: '${repository.forks} forks',
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: DetailRow(
+                                  iconData: Icons.call_split,
+                                  text: '${repository.forks} forks',
+                                ),
                               ),
-                              DetailRow(
-                                iconData: Icons.report_problem,
-                                text: '${repository.issues} issues',
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: DetailRow(
+                                  iconData: Icons.report_problem,
+                                  text: '${repository.issues} issues',
+                                ),
                               ),
-                              DetailRow(
-                                iconData: Icons.book_rounded,
-                                text: repository.license,
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: DetailRow(
+                                  iconData: Icons.book_rounded,
+                                  text: repository.license,
+                                ),
                               ),
-                              DetailRow(
-                                iconData: Icons.access_time,
-                                text:
-                                    '${outputFormat.format(repository.createdAt)}$make',
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: DetailRow(
+                                  iconData: Icons.access_time,
+                                  text:
+                                      '${outputFormat.format(repository.createdAt)}$make',
+                                ),
                               ),
-                              DetailRow(
-                                iconData: Icons.access_time,
-                                text:
-                                    '${outputFormat.format(repository.updatedAt)}$update',
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: DetailRow(
+                                  iconData: Icons.access_time,
+                                  text:
+                                      '${outputFormat.format(repository.updatedAt)}$update',
+                                ),
                               ),
-                              DetailRow(
-                                iconData: Icons.person,
-                                text: repository.ownerName,
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: DetailRow(
+                                  iconData: Icons.person,
+                                  text: repository.ownerName,
+                                ),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
