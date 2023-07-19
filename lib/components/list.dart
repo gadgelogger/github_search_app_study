@@ -7,6 +7,7 @@ import '../screens/search_screen.dart';
 import '../services/github_service.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:github_search_app_study/constants/color_constants.dart';
 
 class RepositoryList extends StatelessWidget {
   final String open;
@@ -52,8 +53,8 @@ class RepositoryList extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color:
                                 Theme.of(context).brightness == Brightness.light
-                                    ? Colors.black
-                                    : Colors.white),
+                                    ? ColorConstants.textLight
+                                    : ColorConstants.textDark),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,15 +64,15 @@ class RepositoryList extends StatelessWidget {
                               Icon(Icons.star_border,
                                   color: Theme.of(context).brightness ==
                                           Brightness.light
-                                      ? Colors.black
-                                      : Colors.white),
+                                      ? ColorConstants.iconLight
+                                      : ColorConstants.iconDark),
                               Text(
                                 '${repository.stars}',
                                 style: TextStyle(
                                     color: Theme.of(context).brightness ==
                                             Brightness.light
-                                        ? Colors.black
-                                        : Colors.white),
+                                        ? ColorConstants.textLight
+                                        : ColorConstants.textDark),
                               ),
                               const SizedBox(
                                 width: 20,
@@ -79,8 +80,8 @@ class RepositoryList extends StatelessWidget {
                               Container(
                                 width: 10.0,
                                 height: 10.0,
-                                decoration: const BoxDecoration(
-                                  color: Colors.green,
+                                decoration: BoxDecoration(
+                                  color: ColorConstants.boxDecoration,
                                   shape: BoxShape.circle,
                                 ),
                               ),
@@ -90,8 +91,8 @@ class RepositoryList extends StatelessWidget {
                                 style: TextStyle(
                                   color: Theme.of(context).brightness ==
                                           Brightness.light
-                                      ? Colors.black
-                                      : Colors.white,
+                                      ? ColorConstants.textLight
+                                      : ColorConstants.textDark,
                                 ),
                               ),
                             ],
@@ -103,8 +104,8 @@ class RepositoryList extends StatelessWidget {
                           height: 1.0,
                           color:
                               Theme.of(context).brightness == Brightness.light
-                                  ? Colors.grey[300]
-                                  : Colors.grey[800],
+                                  ? ColorConstants.dividerLight
+                                  : ColorConstants.dividerDark,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -145,39 +146,31 @@ class RepositoryList extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   FloatingActionButton.extended(
-                                    onPressed: () async {
-                                      String url = repository.htmlUrl;
-                                      if (await canLaunchUrl(Uri.parse(url))) {
-                                        await launchUrl(
-                                          Uri.parse(url),
-                                          mode: LaunchMode.externalApplication,
-                                        );
-                                      } else {
-                                        throw Webview(url);
-                                      }
-                                    },
-                                    label: Text(
-                                      open,
-                                      style: TextStyle(
-                                        color: Theme.of(context).brightness ==
-                                                Brightness.light
-                                            ? Colors.white
-                                            : Colors.white,
+                                      onPressed: () async {
+                                        String url = repository.htmlUrl;
+                                        if (await canLaunchUrl(
+                                            Uri.parse(url))) {
+                                          await launchUrl(
+                                            Uri.parse(url),
+                                            mode:
+                                                LaunchMode.externalApplication,
+                                          );
+                                        } else {
+                                          throw Webview(url);
+                                        }
+                                      },
+                                      label: Text(
+                                        open,
+                                        style: TextStyle(
+                                            color: ColorConstants.textDark),
                                       ),
-                                    ),
-                                    icon: Icon(
-                                      Icons.open_in_new_outlined,
-                                      color: Theme.of(context).brightness ==
+                                      icon: Icon(Icons.open_in_new_outlined,
+                                          color: ColorConstants.textDark),
+                                      backgroundColor: Theme.of(context)
+                                                  .brightness ==
                                               Brightness.light
-                                          ? Colors.white
-                                          : Colors.white,
-                                    ),
-                                    backgroundColor:
-                                        Theme.of(context).brightness ==
-                                                Brightness.light
-                                            ? Colors.black
-                                            : Colors.grey[700],
-                                  ),
+                                          ? ColorConstants.rowBackgroundLight
+                                          : ColorConstants.rowBackgroundDark),
                                 ],
                               ),
                             ],
