@@ -41,8 +41,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                     filled: true,
                     fillColor: Theme.of(context).brightness == Brightness.light
-                        ? ColorConstants.appBarColor_light
-                        : ColorConstants.appBarColor_dark,
+                        ? ColorConstants.appBarColorLight
+                        : ColorConstants.appBarColorDark,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.0),
                       borderSide: BorderSide.none,

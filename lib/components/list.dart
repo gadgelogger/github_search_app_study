@@ -53,8 +53,8 @@ class RepositoryList extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color:
                                 Theme.of(context).brightness == Brightness.light
-                                    ? ColorConstants.text_light
-                                    : ColorConstants.text_dark),
+                                    ? ColorConstants.textLight
+                                    : ColorConstants.textDark),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,15 +64,15 @@ class RepositoryList extends StatelessWidget {
                               Icon(Icons.star_border,
                                   color: Theme.of(context).brightness ==
                                           Brightness.light
-                                      ? ColorConstants.icon_light
-                                      : ColorConstants.icon_dark),
+                                      ? ColorConstants.iconLight
+                                      : ColorConstants.iconDark),
                               Text(
                                 '${repository.stars}',
                                 style: TextStyle(
                                     color: Theme.of(context).brightness ==
                                             Brightness.light
-                                        ? ColorConstants.text_light
-                                        : ColorConstants.text_dark),
+                                        ? ColorConstants.textLight
+                                        : ColorConstants.textDark),
                               ),
                               const SizedBox(
                                 width: 20,
@@ -91,8 +91,8 @@ class RepositoryList extends StatelessWidget {
                                 style: TextStyle(
                                   color: Theme.of(context).brightness ==
                                           Brightness.light
-                                      ? ColorConstants.text_light
-                                      : ColorConstants.text_dark,
+                                      ? ColorConstants.textLight
+                                      : ColorConstants.textDark,
                                 ),
                               ),
                             ],
@@ -104,8 +104,8 @@ class RepositoryList extends StatelessWidget {
                           height: 1.0,
                           color:
                               Theme.of(context).brightness == Brightness.light
-                                  ? ColorConstants.divider_light
-                                  : ColorConstants.divider_dark,
+                                  ? ColorConstants.dividerLight
+                                  : ColorConstants.dividerDark,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -161,15 +161,16 @@ class RepositoryList extends StatelessWidget {
                                       },
                                       label: Text(
                                         open,
-                                        style: TextStyle(color: Colors.white),
+                                        style: TextStyle(
+                                            color: ColorConstants.textDark),
                                       ),
                                       icon: Icon(Icons.open_in_new_outlined,
-                                          color: Colors.white),
+                                          color: ColorConstants.textDark),
                                       backgroundColor: Theme.of(context)
                                                   .brightness ==
                                               Brightness.light
-                                          ? ColorConstants.row_background_light
-                                          : ColorConstants.row_background_dark),
+                                          ? ColorConstants.rowBackgroundLight
+                                          : ColorConstants.rowBackgroundDark),
                                 ],
                               ),
                             ],

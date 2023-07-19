@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
 class ColorConstants {
-  static Color appBarColor_light = Colors.grey[300]!;
-  static Color appBarColor_dark = Colors.grey[800]!;
-  static Color text_light = Colors.black;
-  static Color text_dark = Colors.white;
-  static Color icon_light = Colors.black;
-  static Color icon_dark = Colors.white;
+  static Color appBarColorLight = Colors.grey[300]!;
+  static Color appBarColorDark = Colors.grey[800]!;
+  static Color textLight = Colors.black;
+  static Color textDark = Colors.white;
+  static Color iconLight = Colors.black;
+  static Color iconDark = Colors.white;
   static Color boxDecoration = Colors.green;
-  static Color divider_light = Colors.grey[300]!;
-  static Color divider_dark = Colors.grey[800]!;
-  static Color row_background_light = Colors.black;
-  static Color row_background_dark = Colors.grey[700]!;
-  static Color shimmer_baseColor_light = Colors.grey[300]!;
-  static Color shimmer_baseColor_dark = Colors.grey[700]!;
-  static Color shimmer_highlightColor_light = Colors.grey[200]!;
-  static Color shimmer_highlightColor_dark = Colors.grey[600]!;
-  static Color shimmer_ClipOval_color = Colors.white;
-  static Color shimmer_sizebox_color = Colors.white;
-  static Color shimmer_icon_color = Colors.white;
-  static Color shimmer_Container_color = Colors.white;
+  static Color dividerLight = Colors.grey[300]!;
+  static Color dividerDark = Colors.grey[800]!;
+  static Color rowBackgroundLight = Colors.black;
+  static Color rowBackgroundDark = Colors.grey[700]!;
+  static Color shimmerBaseColorLight = Colors.grey[300]!;
+  static Color shimmerBaseColorDark = Colors.grey[700]!;
+  static Color shimmerHighlightColorLight = Colors.grey[200]!;
+  static Color shimmerHighlightColorDark = Colors.grey[600]!;
+  static Color shimmerClipOvalColor = Colors.white;
+  static Color shimmerSizeboxColor = Colors.white;
+  static Color shimmerIconColor = Colors.white;
+  static Color shimmerContainerColor = Colors.white;
 }
