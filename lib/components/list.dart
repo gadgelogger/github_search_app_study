@@ -113,35 +113,35 @@ class RepositoryList extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Padding(
-                                padding: EdgeInsets.only(bottom: 10.0),
+                                padding: const EdgeInsets.only(bottom: 10.0),
                                 child: DetailRow(
                                   iconData: Icons.remove_red_eye,
                                   text: '${repository.watchers} watchers',
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 10.0),
+                                padding: const EdgeInsets.only(bottom: 10.0),
                                 child: DetailRow(
                                   iconData: Icons.call_split,
                                   text: '${repository.forks} forks',
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 10.0),
+                                padding: const EdgeInsets.only(bottom: 10.0),
                                 child: DetailRow(
                                   iconData: Icons.report_problem,
                                   text: '${repository.issues} issues',
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 10.0),
+                                padding: const EdgeInsets.only(bottom: 10.0),
                                 child: DetailRow(
                                   iconData: Icons.book_rounded,
                                   text: repository.license,
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 10.0),
+                                padding: const EdgeInsets.only(bottom: 10.0),
                                 child: DetailRow(
                                   iconData: Icons.access_time,
                                   text:
@@ -149,7 +149,7 @@ class RepositoryList extends StatelessWidget {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 10.0),
+                                padding: const EdgeInsets.only(bottom: 10.0),
                                 child: DetailRow(
                                   iconData: Icons.access_time,
                                   text:
@@ -157,7 +157,7 @@ class RepositoryList extends StatelessWidget {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 10.0),
+                                padding: const EdgeInsets.only(bottom: 10.0),
                                 child: DetailRow(
                                   iconData: Icons.person,
                                   text: repository.ownerName,
