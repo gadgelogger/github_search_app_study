@@ -35,6 +35,15 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  http: ^1.1.0
+  intl: ^0.18.1
+  provider: ^6.0.5
+  shimmer: ^3.0.0
+  expansion_tile_card: ^3.0.0
+  flutter_native_splash: ^2.3.1
+  flutter_launcher_icons: ^0.13.1
+  fast_i18n: ^5.12.6
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +55,26 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+#アプリのアイコン関連
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon2.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
+ #スプラッシュスクリーン
+flutter_native_splash:
+  color: '#ffffff'
+  image: 'assets/icon.png'
+  color_dark: '#202124'
+  image_dark: 'assets/icon_dark.png'
+  fullscreen: false
+  android_12:
+    icon_background_color: '#ffffff'
+    image: 'assets/icon.png'
+    icon_background_color_dark: '#202124'
+    image_dark: 'assets/icon_dark.png'
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -59,9 +88,12 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/error.gif
+    - assets/search.gif
+    - assets/icon.png
+    - assets/icon2.png
+    - assets/icon_dark.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
