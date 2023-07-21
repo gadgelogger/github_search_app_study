@@ -44,6 +44,8 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   fast_i18n: ^5.12.6
   url_launcher: ^6.1.12
+  mockito: ^5.4.2
+  build_runner: ^2.1.4
 
 dev_dependencies:
   flutter_test:

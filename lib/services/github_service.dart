@@ -20,13 +20,17 @@ class GithubService {
           items.map((item) => Repository.fromJson(item)).toList();
       return SearchResult(totalCount: totalCount, items: repositories);
     } else {
+      // レスポンスのステータスコードと本文をログに出力
+      print('Error while searching for repositories: '
+          'Status code ${response.statusCode}, '
+          'Response body ${response.body}');
       throw Exception('Failed to load repositories');
     }
   }
 }
 
 class SearchProvider extends ChangeNotifier {
-  final GithubService _githubService = GithubService();
+  final GithubService _githubService = GithubService(); //これ
   List<Repository> _repositories = [];
   bool _isLoading = false;
   bool _isLoadingMore = false;
