@@ -5,32 +5,32 @@ import 'package:flutter/foundation.dart';
 import 'package:github_search_app_study/i18n/translations.g.dart';
 
 class GithubService {
+  final http.Client _client;
+
+  GithubService(this._client);
+
   Future<SearchResult> searchRepositories(String keyword,
       {int page = 1}) async {
-    final response = await http.get(
+    final response = await _client.get(
       Uri.parse(
           'https://api.github.com/search/repositories?q=$keyword&page=$page'),
     );
 
     if (response.statusCode == 200) {
-      var json = jsonDecode(response.body);
-      int totalCount = json['total_count'];
-      List<dynamic> items = json['items'];
-      List<Repository> repositories =
+      final json = jsonDecode(response.body);
+      final int totalCount = json['total_count'];
+      final List<dynamic> items = json['items'];
+      final List<Repository> repositories =
           items.map((item) => Repository.fromJson(item)).toList();
       return SearchResult(totalCount: totalCount, items: repositories);
     } else {
-      // レスポンスのステータスコードと本文をログに出力
-      print('Error while searching for repositories: '
-          'Status code ${response.statusCode}, '
-          'Response body ${response.body}');
       throw Exception('Failed to load repositories');
     }
   }
 }
 
 class SearchProvider extends ChangeNotifier {
-  final GithubService _githubService = GithubService(); //これ
+  final GithubService _githubService = GithubService(http.Client());
   List<Repository> _repositories = [];
   bool _isLoading = false;
   bool _isLoadingMore = false;
@@ -40,7 +40,7 @@ class SearchProvider extends ChangeNotifier {
 
   List<Repository> get repositories => _repositories;
   bool get isLoading => _isLoading;
-  bool get isLoadingMore => _isLoadingMore;
+  bool get isLoadingMore => _isLoadingMore; // <- added this line
   bool get hasSearched => _hasSearched;
   String get errorMessage => _errorMessage;
   int get totalCount => _totalCount;
@@ -52,7 +52,7 @@ class SearchProvider extends ChangeNotifier {
   void clear() {
     _repositories = [];
     _isLoading = false;
-    _isLoadingMore = false;
+    _isLoadingMore = false; // <- added this line
     _hasSearched = false;
     _errorMessage = '';
     _totalCount = 0;
@@ -78,12 +78,15 @@ class SearchProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // fetchMore method
   Future<void> fetchMore(String keyword) async {
-    _isLoadingMore = true;
+    _isLoadingMore = true; // Set loading more to true
     notifyListeners();
     try {
+      // Fetch next page of results based on the current list length
       final result = await _githubService.searchRepositories(keyword,
           page: _repositories.length ~/ 10 + 1);
+      // Add new items to our list
       _repositories.addAll(result.items);
       _totalCount = result.totalCount;
       if (_repositories.isEmpty) {
@@ -92,7 +95,7 @@ class SearchProvider extends ChangeNotifier {
     } catch (e) {
       _errorMessage = error;
     }
-    _isLoadingMore = false;
+    _isLoadingMore = false; // Set loading more to false
     notifyListeners();
   }
 }
